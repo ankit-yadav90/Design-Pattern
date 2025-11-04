@@ -1,15 +1,26 @@
-function createUser(name, age) {
-  return {
-    name,
-    age,
-    sayHello() {
-      console.log(`Hello, my name is ${name} and I'm ${age} years old.`);
-    }
+let Bank = (function () {
+  let bankbalance = 12000;
+
+  function checkBalance (){
+    console.log(bankbalance)
   };
-}
 
-const user1 = createUser("Ankit", 22);
-const user2 = createUser("Ravi", 25);
+  function setbalance (val) {
+    bankbalance = val;
+  }
 
-user1.sayHello(); // Hello, my name is Ankit and I'm 22 years old.
-user2.sayHello();
+  function withdrow (val) {
+    if(val <= bankbalance) {
+      bankbalance -= val;
+      console.log(bankbalance)
+    }
+  }
+
+  return {
+    checkBalance,
+    setbalance,
+    withdrow
+  }
+})();
+
+Bank.withdrow(1000);
